@@ -12,7 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
-namespace jwt_auth_dotnet_core
+namespace Server
 {
     public class Startup
     {
@@ -26,17 +26,12 @@ namespace jwt_auth_dotnet_core
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddControllers();
-            services
-                .AddSwaggerGen(c =>
-                {
-                    c
-                        .SwaggerDoc("v1",
-                        new OpenApiInfo {
-                            Title = "jwt_auth_dotnet_core",
-                            Version = "v1"
-                        });
-                });
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Server", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,11 +41,7 @@ namespace jwt_auth_dotnet_core
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app
-                    .UseSwaggerUI(c =>
-                        c
-                            .SwaggerEndpoint("/swagger/v1/swagger.json",
-                            "jwt_auth_dotnet_core v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Server v1"));
             }
 
             app.UseHttpsRedirection();
@@ -59,11 +50,10 @@ namespace jwt_auth_dotnet_core
 
             app.UseAuthorization();
 
-            app
-                .UseEndpoints(endpoints =>
-                {
-                    endpoints.MapControllers();
-                });
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
         }
     }
 }

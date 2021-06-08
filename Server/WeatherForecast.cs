@@ -1,6 +1,6 @@
 using System;
 
-namespace jwt_auth_dotnet_core
+namespace Server
 {
     public class WeatherForecast
     {

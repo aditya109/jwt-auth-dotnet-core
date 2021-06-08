@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace jwt_auth_dotnet_core.Controllers
+namespace Server.Controllers
 {
     [ApiController]
     [Route("[controller]")]
